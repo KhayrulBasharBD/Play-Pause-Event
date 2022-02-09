@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        
+        h1{
+            text-align: center;
+            margin-top: 40px;
+            background: teal;
+            color: white;
+            
+        }
+        .div{
+            background-color:aquamarine;
+            width: 220px;
+            height: 300px;
+            margin-top: 40px;
+            float: left;
+            margin-right: 15px;
+            text-align: center;
+            
+        }
+        h3{
+            margin-top: 50px;
+            font-size: 2rem;
+        }
+        .clear::after{
+            display: table;
+            content: '';
+            clear: both;
+        }
+        button{
+            margin-top: 25px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            box-shadow: 2px 3px 2px black;
+        }
+        h2{
+            margin-top: 40px;
+        }
+        
+        .stopAll{
+            margin: 15px auto;
+        }
+    </style>
+    <title>Auto Counting</title>
+</head>
+<body>
+    <h1>Play And Pasue Event</h1>
+    <div class="div">
+        <h2>Total Project</h2>
+        <h3 id="num1"></h3>
+        <button class="btn1" onclick="project()">Show Project</button>
+        <button class="stop stopAll">Stop Project</button>
+    </div>
+    <div class="div">
+        <h2>Total Clint</h2>
+        <h3 id="num2"></h3>
+        <button class="btn2" onclick="clint()">Show Clints</button>
+        <button class="stop2 stopAll">Stop Clint</button>
+    </div>
+    <div class="div">
+        <h2>Total Achieve</h2>
+        <h3 id="num3"></h3>
+        <button class="btn3" onclick="achieve()">Show Achieves</button>
+        <button class="stop3 stopAll">Stop Achieve</button>
+    </div>
+    
+    <script>
+        var count = 0;
+        let stopBtn = document.querySelector('.stop');
+        stopBtn.style.display = 'none';
+        
+        let stopBtn2 = document.querySelector('.stop2');
+        stopBtn2.style.display = 'none';
+        
+        let stopBtn3 = document.querySelector('.stop3');
+        stopBtn3.style.display = 'none';
+        
+        //Project
+        function project(){
+            var project = setInterval(autoCount, 10);
+            function autoCount(){
+                count++;
+                let num1 = document.querySelector('#num1').innerHTML = count;
+                
+                if(count == 700){
+                    clearInterval(project);
+                }
+                
+                let play1 = document.querySelector('.btn1');
+                play1.innerHTML = "Play Project"
+                let stop = document.querySelector('.stop');
+                stop.style.display = 'block';
+                stop.addEventListener('click', () =>{
+                    clearInterval(project);
+                })
+            };
+        }
+        
+        //clint
+        function clint(){
+            let clint = setInterval(clintFunc, 5);
+            function clintFunc(){
+                count++;
+                let num2 = document.querySelector('#num2').innerHTML = count;
+                if(count == 700){
+                    clearInterval(clint);
+                }
+                
+                let play2 = document.querySelector('.btn2');
+                play2.innerHTML = 'Play Clint';
+                let stop2 = document.querySelector('.stop2');
+                stop2.style.display = 'block';
+                stop2.addEventListener('click', () =>{
+                    clearInterval(clint);
+                })
+            }
+            
+        }
+        
+        //Achieve
+        function achieve(){
+            let achieve = setInterval(achieveFunc, 5);
+            function achieveFunc(){
+                count++;
+                let num3 = document.querySelector('#num3').innerHTML = count;
+                if(count == 700){
+                    clearInterval(achieve);
+                }
+                
+                let play3 = document.querySelector('.btn3');
+                play3.innerHTML = "Play Achieve";
+                let stop3 = document.querySelector('.stop3');
+                stop3.style.display = 'block';
+                stop3.addEventListener('click', () =>{
+                    clearInterval(achieve);
+                })
+            }
+        }
+    </script>
+</body>
+</html>
