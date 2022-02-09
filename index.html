@@ -10,7 +10,11 @@
             padding: 0;
             box-sizing:border-box;
         }
-        
+
+        .container{
+            text-align:center;
+            display: inline-block;
+        }
         h1{
             text-align: center;
             margin-top: 40px;
@@ -20,13 +24,13 @@
         }
         .div{
             background-color:aquamarine;
-            width: 220px;
+            width: 400px;
             height: 300px;
             margin-top: 40px;
             float: left;
+            margin-left: 33px;
             margin-right: 15px;
             text-align: center;
-            
         }
         h3{
             margin-top: 50px;
@@ -51,28 +55,41 @@
         .stopAll{
             margin: 15px auto;
         }
+        .load{
+            margin: 25px 0  0 150px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            box-shadow: 2px 3px 2px black;
+        }
     </style>
     <title>Auto Counting</title>
 </head>
 <body>
     <h1>Play And Pasue Event</h1>
-    <div class="div">
-        <h2>Total Project</h2>
-        <h3 id="num1"></h3>
-        <button class="btn1" onclick="project()">Show Project</button>
-        <button class="stop stopAll">Stop Project</button>
-    </div>
-    <div class="div">
-        <h2>Total Clint</h2>
-        <h3 id="num2"></h3>
-        <button class="btn2" onclick="clint()">Show Clints</button>
-        <button class="stop2 stopAll">Stop Clint</button>
-    </div>
-    <div class="div">
-        <h2>Total Achieve</h2>
-        <h3 id="num3"></h3>
-        <button class="btn3" onclick="achieve()">Show Achieves</button>
-        <button class="stop3 stopAll">Stop Achieve</button>
+    <div class="container">
+        <div class="div">
+            <h2>Total Project</h2>
+            <h3 id="num1"></h3>
+            <button class="btn1" onclick="project()">Show Project</button>
+            <button class="stop stopAll">Stop Project</button>
+        </div>
+        <div class="div">
+            <h2>Total Clint</h2>
+            <h3 id="num2"></h3>
+            <button class="btn2" onclick="clint()">Show Clints</button>
+            <button class="stop2 stopAll">Stop Clint</button>
+        </div>
+        <div class="div">
+            <h2>Total Achieve</h2>
+            <h3 id="num3"></h3>
+            <button class="btn3" onclick="achieve()">Show Achieves</button>
+            <button class="stop3 stopAll">Stop Achieve</button>
+        </div>
+        <div class="clear"></div>
+        <div class="reload">
+            <input type="button" value="Click to refresh" class="load">
+        </div>
     </div>
     
     <script>
@@ -147,6 +164,11 @@
                 })
             }
         }
+
+        let load = document.querySelector('.load');
+        load.addEventListener('click', () =>{
+            window.location.reload();
+        })
     </script>
 </body>
 </html>
